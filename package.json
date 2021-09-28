@@ -1,19 +1,25 @@
 {
-  "name": "myflix_client",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Amanda1024/myFlix_client.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Amanda1024/myFlix_client/issues"
-  },
-  "homepage": "https://github.com/Amanda1024/myFlix_client#readme"
+    "name": "myflix_client",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Amanda1024/myFlix_client.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Amanda1024/myFlix_client/issues"
+    },
+    "homepage": "https://github.com/Amanda1024/myFlix_client#readme",
+    "dependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
+    "devDependencies": {
+        "@parcel/transformer-sass": "^2.0.0-rc.0"
+    }
 }
