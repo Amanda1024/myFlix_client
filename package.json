@@ -16,7 +16,6 @@
     },
     "homepage": "https://github.com/Amanda1024/myFlix_client#readme",
     "dependencies": {
-        "prop-types": "^15.7.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
     },
