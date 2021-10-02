@@ -1,6 +1,9 @@
 // Required to create a component, imports React into the file
 import React from 'react';
+import axios from 'axios';
 import ReactDOM from 'react-dom';
+import { RegistrationView } from '../registration-view/registration-view';
+import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
@@ -11,34 +14,68 @@ export class MainView extends React.Component {
   constructor() {
       super();
       this.state = {
-        movies: [
-            { _id: 1, Title: 'Inception', Description: 'desc1...', ImagePath: '...'},
-            { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...'},
-            { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...'}
-        ],
-        selectedMovie: null
+        movies: [],
+        selectedMovie: null,
+        user: null
       };
     } 
 
+  componentDidMount(){
+      axios.get('https://af-myflix-movie-app.herokuapp.com/movies')
+      .then(response => {
+          this.setState({
+              movies: response.data
+          });
+      })
+      .catch(error => {
+          console.log(error);
+      });
+  } 
 
-  setSelectedMovie(newSelectedMovie) {
+  // When a movie is clicked, this function updates the state of the 'selectedMovie' property to that movie
+  setSelectedMovie(movie) {
       this.setState({
-          selectedMovie: newSelectedMovie
+          selectedMovie: movie
+      });
+  }
+
+  // Allows registered profile to be created
+  onRegistration(register) {
+      this.setState({
+          register,
+      });
+  }
+
+  // When a user successfully logs in, this function updates the 'user' property in state to that specific user
+  onLoggedIn(user) {
+      this.setState({
+          user,
       });
   }
 
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie, user, register } = this.state;
+
+    // If user doesn't exist, they're prompted to register. If user does exist, they're asked to login
+    if (!register)
+    return (
+        <RegistrationView onRegistration={(register) => this.onRegistration(register)} />
+    );
+
+    // Once user is logged in, they are shown their login view
+    if (!user)
+    return
+        <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
   
-    if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+    if (movies.length === 0) return <div className='main-view' />;
   
     return (
-      <div className="main-view">
+      <div className='main-view'>
         {selectedMovie
           ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => 
             { this.setSelectedMovie(newSelectedMovie);}}/>
           : movies.map(movie => ( 
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
+            <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>
           ))
         }
       </div>
