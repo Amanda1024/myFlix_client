@@ -64,23 +64,25 @@ export class MainView extends React.Component {
 
     // Once user is logged in, they are shown their login view
     if (!user)
-    return
-        <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+    return (
+        <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+    );
   
     if (movies.length === 0) return <div className='main-view' />;
   
     return (
       <div className='main-view'>
         {selectedMovie
-          ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => 
+          ? <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => 
             { this.setSelectedMovie(newSelectedMovie);}}/>
           : movies.map(movie => ( 
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>
+            <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
           ))
         }
       </div>
     );
   }
 }
+
 
 export default MainView;
