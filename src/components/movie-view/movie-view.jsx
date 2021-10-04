@@ -15,9 +15,9 @@ export class MovieView extends React.Component {
                 <span className='label'>Title: </span>
                 <span className='value'>{movie.Title}</span>
               </div>
-              {/* <div className='movie-genre'>
+              <div className='movie-genre'>
                   <span className='label'>Genre: </span>
-                  <span className='value'>{movie.Genre}</span>
+                  <span className='value'>{movie.Genre.Name}</span>
               </div>
               <div className='movie-rating'>
                   <span className='label'>Rating: </span>
@@ -25,8 +25,8 @@ export class MovieView extends React.Component {
               </div>
               <div className='movie-director'>
                   <span className='label'>Director: </span>
-                  <span className='value'>{movie.Director}</span>
-              </div> */}
+                  <span className='value'>{movie.Director.Name}</span>
+              </div>
               <div className='movie-description'>
                 <span className='label'>Description: </span>
                 <span className='value'>{movie.Description}</span>
@@ -41,6 +41,13 @@ MovieView.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired
+    ImagePath: PropTypes.string.isRequired,
+    Rating: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired
+    }),
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired
+    }),
   }).isRequired,
 };
