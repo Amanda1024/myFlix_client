@@ -25505,24 +25505,6 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieCard", ()=>MovieCard
 );
 var _jsxRuntime = require("react/jsx-runtime");
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// export class MovieCard extends React.Component {
-//   render() {
-//     const { movie, onMovieClick } = this.props;  
-//     return (
-//     <div onClick={() => onMovieClick(movie)} className='movie-card'>{movie.Title}</div>
-//     );
-//   }
-// }
-// MovieCard.propTypes = {
-//   movie: PropTypes.shape({
-//     Title: PropTypes.string.isRequired,
-//     Description: PropTypes.string.isRequired,
-//     ImagePath: PropTypes.string.isRequired
-//     }).isRequired,
-//   onMovieClick: PropTypes.func.isRequired
-// };
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
@@ -25537,7 +25519,7 @@ class MovieCard extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 29
+                lineNumber: 8
             },
             __self: this,
             children: movie.Title
@@ -25547,8 +25529,8 @@ class MovieCard extends _reactDefault.default.Component {
 MovieCard.propTypes = {
     movie: _propTypesDefault.default.shape({
         Title: _propTypesDefault.default.string.isRequired,
-        description: _propTypesDefault.default.string.isRequired,
-        imageUrl: _propTypesDefault.default.string.isRequired
+        Description: _propTypesDefault.default.string.isRequired,
+        ImagePath: _propTypesDefault.default.string.isRequired
     }).isRequired,
     onMovieClick: _propTypesDefault.default.func.isRequired
 };
