@@ -22887,26 +22887,25 @@ class MainView extends _reactDefault.default.Component {
                         lineNumber: 97
                     },
                     __self: this,
-                    children: movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                            md: 3,
+                    children: movies.map(movie = /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                        md: 3,
+                        __source: {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 99
+                        },
+                        __self: this,
+                        children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
+                            movie: movie,
+                            onMovieClick: (movie)=>{
+                                this.setSelectedMovie(movie);
+                            },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 99
+                                lineNumber: 100
                             },
-                            __self: this,
-                            children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
-                                movie: movie,
-                                onMovieClick: (movie1)=>{
-                                    this.setSelectedMovie(movie1);
-                                },
-                                __source: {
-                                    fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 100
-                                },
-                                __self: this
-                            }, movie._id)
+                            __self: this
                         })
-                    )
+                    }, movie._id))
                 })
             })
         }));
@@ -24509,7 +24508,7 @@ function RegistrationView(props) {
         props.onRegistration(username);
     };
     return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-        class: "registration",
+        className: "registration",
         __source: {
             fileName: "src/components/registration-view/registration-view.jsx",
             lineNumber: 23
@@ -24639,7 +24638,7 @@ function RegistrationView(props) {
                     ]
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                    class: "button",
+                    className: "button",
                     type: "submit",
                     onClick: handleSubmit,
                     __source: {
@@ -26571,7 +26570,7 @@ function LoginView(props) {
         /* Send request to server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
     };
     return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-        class: "login",
+        className: "login",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
             lineNumber: 21
@@ -26641,7 +26640,7 @@ function LoginView(props) {
                     ]
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                    class: "button",
+                    className: "button",
                     variant: "primary",
                     type: "submit",
                     onClick: handleSubmit,
@@ -26832,7 +26831,7 @@ class MovieCard extends _reactDefault.default.Component {
     render() {
         const { movie , onMovieClick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-            class: "card",
+            className: "card",
             __source: {
                 fileName: "src/components/movie-card/movie-card.jsx",
                 lineNumber: 13
@@ -26878,7 +26877,7 @@ class MovieCard extends _reactDefault.default.Component {
                                 children: movie.Description
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                                class: "button",
+                                className: "button",
                                 onClick: ()=>onMovieClick(movie)
                                 ,
                                 variant: "link",
@@ -27067,7 +27066,7 @@ class MovieView extends _reactDefault.default.Component {
     render() {
         const { movie , onBackClick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-            class: "info",
+            className: "info",
             __source: {
                 fileName: "src/components/movie-view/movie-view.jsx",
                 lineNumber: 12
@@ -27238,7 +27237,7 @@ class MovieView extends _reactDefault.default.Component {
                         ]
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                        class: "button",
+                        className: "button",
                         onClick: ()=>{
                             onBackClick(null);
                         },

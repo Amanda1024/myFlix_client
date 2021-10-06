@@ -20,7 +20,7 @@ export function RegistrationView(props) {
     };
 
     return (
-        <div class='registration'>
+        <div className='registration'>
         <Form>
             <Form.Group controlId='formUsername'>
                 <Form.Label>Username:</Form.Label>
@@ -41,7 +41,7 @@ export function RegistrationView(props) {
                 <Form.Label>Birthday:</Form.Label>
                 <Form.Control type='text' value={birthday} onChange={(e) => setBirthday(e.target.value)} />
             </Form.Group>
-            <button class='button' type='submit' onClick={handleSubmit}>Sign Up</button>
+            <button className='button' type='submit' onClick={handleSubmit}>Sign Up</button>
         </Form>
         </div>
     );
