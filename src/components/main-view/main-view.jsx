@@ -7,6 +7,16 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
+import './main-view.scss';
+
+
 
 // Exposes the main view component, making it available for use elsewhere
 export class MainView extends React.Component {
@@ -71,18 +81,33 @@ export class MainView extends React.Component {
     if (movies.length === 0) return <div className='main-view' />;
   
     return (
+    
+      <Container>
       <div className='main-view'>
         {selectedMovie
-          ? <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => 
-            { this.setSelectedMovie(newSelectedMovie);}}/>
-          : movies.map(movie => ( 
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
-          ))
+          ?(
+          <Row className='justify-content-md-center'>
+              <Col md={8}>
+                <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => 
+                { this.setSelectedMovie(newSelectedMovie);}}/>
+              </Col>  
+          </Row>
+          )
+          : (
+          <Row className='justify-content-md-center'>
+            {movies.map(movie = ( 
+               <Col md ={3} key={movie._id}>
+                 <MovieCard movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
+               </Col>
+            ))}
+          </Row>
+         )
         }
       </div>
+      </Container>
+
     );
   }
 }
-
 
 export default MainView;

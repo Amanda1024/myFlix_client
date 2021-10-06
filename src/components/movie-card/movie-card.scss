@@ -1,0 +1,28 @@
+.card {
+    border: 0.2px solid grey;
+    box-shadow: 5px 5px 5px #e4e7f8;
+    border-radius: 15px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.button {
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 8px 18px 8px 18px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: white;
+    border: 1px;
+    background-color: #7889DF;
+    transition: 0.2s opacity;
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+    opacity: 0.8;
+}
