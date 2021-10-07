@@ -10,9 +10,9 @@ import { MovieView } from '../movie-view/movie-view';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+// import Navbar from 'react-bootstrap/Navbar';
+// import Nav from 'react-bootstrap/Nav';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import './main-view.scss';
 
@@ -57,9 +57,29 @@ export class MainView extends React.Component {
   }
 
   // When a user successfully logs in, this function updates the 'user' property in state to that specific user
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+      console.log(authData);
       this.setState({
-          user,
+          user: authData.user.Username
+      });
+
+      localStorage.setItem('token', authData.token);
+      localStorage.setItem('user', authData.user.Username);
+      this.getMovies(authData.token);
+  }
+
+  getMovies(token) {
+      axios.get('https://af-myflix-movie-app.herokuapp.com/movies', {
+          headers: { Authorization: `Bearer ${token}`}
+      })
+      .then(response => {
+         // Assign the result to the state
+         this.setState({
+             movies: response.data 
+         }); 
+      })
+      .catch(function (error) {
+          console.log(error);
       });
   }
 
@@ -95,9 +115,9 @@ export class MainView extends React.Component {
           )
           : (
           <Row className='justify-content-md-center'>
-            {movies.map(movie = ( 
-               <Col md ={3} key={movie._id}>
-                 <MovieCard movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
+            {movies.map(movies = ( 
+               <Col md ={3} key={movies._id}>
+                 <MovieCard movie={movies} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
                </Col>
             ))}
           </Row>
