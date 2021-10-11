@@ -1,8 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Button, Card, CardDeck, Form, Row, Col } from 'react-bootstrap';
+import { Button, Card, Row, Col, Figure, Link, Container } from 'react-bootstrap';
+
 import './profile-view.scss';
+
+import UserInfo from './user-view';
+import FavoriteMovies from './favorites-view';
+import UpdateUser from './update-view';
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -155,77 +160,30 @@ export class ProfileView extends React.Component {
 
   render() {
     const { FavoriteMovies, validated } = this.state;
-    const { movies } = this.props;
+    const { movies, user, username, email} = this.props;
+
+    const favoriteMovieList = movies.filter((movies) => {
+    return user.FavoriteMovies.includes(movies._id);
+  });
 
     return (
-      <Row className='profile-view'>
-        <Card className='profile-card'>
-          <Card.Body>
-          <h3>Your Favorite Movies</h3>
-            {FavoriteMovies.length === 0 && <div className='text-center'>Empty</div>}
-
-            <div className='favorite-movies'>
-              {FavoriteMovies.length > 0 &&
-              movies.map((movie) => {
-                if (movie._id === FavoriteMovies.find((favMovie) => favMovie === movie._id)) {
-                return (
-                  <Col md={12} key={movie._id} >
-                    <CardDeck className='movie-card-deck'>
-                        <Card className='favorites-item card-content' style={{ width: '16rem' }} key={movie._id}>
-                          <Card.Img style={{ width: '18rem' }} className='movieCard' variant='top' src={movie.ImagePath} />
-                            <Card.Body>
-                              <Card.Title className='movie-card-title'>{movie.Title}</Card.Title>
-                              <button className='button' variant='danger' value={movie._id} onClick={(e) => this.removeFavoriteMovie(e, movie)}>
-                               Remove
-                              </button>
-                            </Card.Body>
-                        </Card>
-                    </CardDeck>
-                  </Col>
-                    );
-                  }
-                })}
-            </div>
-          </Card.Body>
-          <Card.Body>
-            <Form noValidate validated={validated} className='update-form' onSubmit={(e) => this.handleUpdate(e, this.Name, this.Username, this.Password, this.Email, this.Birthday)}>
-            <p className='update'>Update Profile</p>
-              <Form.Group controlId='formName'>
-                <Form.Label className='form-label'>Name</Form.Label>
-                <Form.Control type='text' placeholder='Change Name' onChange={(e) => this.setName(e.target.value)} />
-              </Form.Group>
-
-              <Form.Group controlId='formBasicUsername'>
-                <Form.Label className='form-label'>Username</Form.Label>
-                <Form.Control type='text' placeholder='Change Username' onChange={(e) => this.setUsername(e.target.value)} />
-              </Form.Group>
-
-              <Form.Group controlId='formBasicPassword'>
-                <Form.Label className='form-label'>Password</Form.Label>
-                <Form.Control type='password' placeholder='New Password' onChange={(e) => this.setPassword(e.target.value)} />
-              </Form.Group>
-
-              <Form.Group controlId='formBasicEmail'>
-                <Form.Label className='form-label'>Email</Form.Label>
-                <Form.Control type='email' placeholder='Change Email' onChange={(e) => this.setEmail(e.target.value)} />
-              </Form.Group>
-
-              <Form.Group controlId='formBasicBirthday'>
-                <Form.Label className='form-label'>Birthday</Form.Label>
-                <Form.Control type='date' placeholder='Change Birthday' onChange={(e) => this.setBirthday(e.target.value)} />
-              </Form.Group>
-
-              <button className='button' variant='danger' type='submit'>
-                Update
-              </button>
-
-              <button className='delete-button' variant='danger' onClick={(e) => this.handleDeleteUser(e)}>
-                Delete Account
-              </button>
-            </Form>
-          </Card.Body>
-        </Card>
-      </Row >
+      <Container>
+        <Row>
+          <Col xs={12} sm={4}>
+            <Card>
+              <Card.Body>
+                <UserInfo name={username} email={email} />
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col xs={12} sm={8}>
+            <Card.Body>
+              <UpdateUser/>
+            </Card.Body>
+          </Col>
+        </Row>
+         <FavoriteMovies favoriteMovieList={favoriteMovieList} />
+      </Container>  
     );
   }
 }
