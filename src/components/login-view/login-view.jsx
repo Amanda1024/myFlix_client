@@ -6,7 +6,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import './login-view.scss';
-import axios from 'axios';
 
 export function LoginView(props) {
     const [ username, setUsername ] = useState('');
@@ -24,7 +23,7 @@ export function LoginView(props) {
             props.onLoggedIn(data);
         })
         .catch(e => {
-            console.log('no such user')
+            console.log('no such user exists')
         });
     };
 
@@ -40,12 +39,16 @@ export function LoginView(props) {
                 <Form.Label>Password:</Form.Label>
                 <Form.Control type='password' onChange={e => setPassword(e.target.value)} />
             </Form.Group>
-            <button className='button' variant='primary' type='submit' onClick={handleSubmit}>Submit</button>
+            <Button className='button' variant='primary' type='submit' onClick={handleSubmit}>Submit</Button>
         </Form>
         </div>
     );
 }
 
 LoginView.propTypes = {
+    user: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+    }),
     onLoggedIn: PropTypes.func.isRequired
   };
