@@ -115,6 +115,8 @@ button:focus,
 .button:focus {
   opacity: 0.8;
 }
+
+
 .main-view {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -123,6 +125,67 @@ button:focus,
 
 .col-md-3 {
   padding: 20px;
+}
+.profile-card {
+  padding: 30px;
+  border-radius: 15px;
+  font-family: "Lato", sans-serif;
+  margin: 40px;
+  text-align: center;
+}
+
+.favorite-movies {
+  padding: 40px;
+  border-radius: 15px;
+  font-family: "Lato", sans-serif;
+}
+
+.movie-card-deck {
+  padding: 40px;
+  border-radius: 15px;
+  font-family: "Lato", sans-serif;
+  margin: 40px;
+}
+
+.update-form {
+  padding: 30px;
+  border-radius: 15px;
+  font-family: "Lato", sans-serif;
+  margin: 40px;
+  text-align: left;
+  min-width: 400px;
+}
+
+.button {
+  border-radius: 5px;
+  margin-top: 15px;
+  padding: 10px 30px 10px 30px;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: white;
+  border: 1px;
+  background-color: #7889DF;
+  transition: 0.2s opacity;
+}
+
+.delete-button {
+  border-radius: 5px;
+  margin-top: 15px;
+  padding: 10px 30px 10px 30px;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: white;
+  border: 1px;
+  background-color: #7889DF;
+  transition: 0.2s opacity;
+  float: right;
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+  opacity: 0.8;
 }
 .my-flix {
   color: steelblue;
