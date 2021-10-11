@@ -126,9 +126,9 @@ render() {
 
             <Route path='/register' render={() => {
               if (user) return <Redirect to='/' />
-              return <Col>
+              return (<Col>
                 <RegistrationView />
-              </Col>
+              </Col>)
           }} />
 
             <Route path='/profile' render={() => {
