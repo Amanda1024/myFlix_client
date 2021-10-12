@@ -113,10 +113,10 @@ render() {
 
             <Route exact path='/' render={() => {
               if (!user) return 
-              <Col>
+              (<Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-              </Col>
-              if (movies.length === 0) return <div className='main-view' />;
+              </Col>);
+              if (movies.length === 0) return (<div className="main-view">No movies found!</div>);
               return movies.map(m => (
               <Col md={3} key={m._id}>
                 <MovieCard movie={m} />

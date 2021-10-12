@@ -22875,7 +22875,8 @@ class MainView extends _reactDefault.default.Component {
                                     })
                                 });
                                 if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                    className: "main-view"
+                                    className: "main-view",
+                                    children: "No movies found!"
                                 }));
                                 return movies.map((m)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                                         md: 3,
@@ -40976,8 +40977,8 @@ class ProfileView extends _reactDefault.default.Component {
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_userViewDefault.default, {
-                                        name: username,
-                                        email: email,
+                                        name: user.Username,
+                                        email: user.Email,
                                         __source: {
                                             fileName: "src/components/profile-view/profile-view.jsx",
                                             lineNumber: 175

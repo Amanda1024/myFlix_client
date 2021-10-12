@@ -172,7 +172,7 @@ export class ProfileView extends React.Component {
           <Col xs={12} sm={4}>
             <Card>
               <Card.Body>
-                <UserInfo name={username} email={email} />
+                <UserInfo name={user.Username} email={user.Email} />
               </Card.Body>
             </Card>
           </Col>
