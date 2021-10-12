@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Button, Card, Row, Col, Figure, Link, Container } from 'react-bootstrap';
+import { Card, Row, Col, Container } from 'react-bootstrap';
 
 import './profile-view.scss';
 
@@ -162,7 +162,7 @@ export class ProfileView extends React.Component {
     const { FavoriteMovies, validated } = this.state;
     const { movies, user, username, email} = this.props;
 
-    const favoriteMovieList = movies.filter((movies) => {
+    const FavoriteMovies = movies.filter((movies) => {
     return user.FavoriteMovies.includes(movies._id);
   });
 
@@ -178,7 +178,7 @@ export class ProfileView extends React.Component {
           </Col>
           <Col xs={12} sm={8}>
             <Card.Body>
-              <UpdateUser/>
+              <UpdateUser user={user} setUser={setUser} />
             </Card.Body>
           </Col>
         </Row>

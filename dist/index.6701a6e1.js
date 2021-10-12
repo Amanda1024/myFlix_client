@@ -40938,7 +40938,7 @@ class ProfileView extends _reactDefault.default.Component {
     render() {
         const { FavoriteMovies , validated  } = this.state;
         const { movies , user , username , email  } = this.props;
-        const favoriteMovieList = movies.filter((movies1)=>{
+        const FavoriteMovies = movies.filter((movies1)=>{
             return user.FavoriteMovies.includes(movies1._id);
         });
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
@@ -41002,6 +41002,8 @@ class ProfileView extends _reactDefault.default.Component {
                                 },
                                 __self: this,
                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_updateViewDefault.default, {
+                                    user: user,
+                                    setUser: setUser,
                                     __source: {
                                         fileName: "src/components/profile-view/profile-view.jsx",
                                         lineNumber: 181
