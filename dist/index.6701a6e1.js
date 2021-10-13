@@ -22914,6 +22914,9 @@ class MainView extends _reactDefault.default.Component {
                             render: ()=>{
                                 if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_profileView.ProfileView, {
+                                        user: user,
+                                        movies: movies,
+                                        onBackClick: ()=>history.goBack()
                                     })
                                 }));
                             },
@@ -40794,7 +40797,20 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ProfileView", ()=>ProfileView
-);
+) // ProfileView.propTypes = {
+ //   user: PropTypes.shape({
+ //     FavoriteMovies: PropTypes.arrayOf(
+ //       PropTypes.shape({
+ //         _id: PropTypes.string.isRequired,
+ //         Title: PropTypes.string.isRequired,
+ //       })
+ //     ),
+ //     Username: PropTypes.string.isRequired,
+ //     Email: PropTypes.string.isRequired,
+ //     Birthday: PropTypes.string,
+ //   }),
+ // };
+;
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -40937,11 +40953,11 @@ class ProfileView extends _reactDefault.default.Component {
         });
     }
     render() {
-        const { FavoriteMovies , validated  } = this.state;
-        const { movies , user , username , email  } = this.props;
-        const FavoriteMovies = movies.filter((movies1)=>{
-            return user.FavoriteMovies.includes(movies1._id);
-        });
+        // const { FavoriteMovies, username } = this.state;
+        const { movies , user , username , email , FavoriteMovies  } = this.props;
+        //   const FavoriteMovies = movies.filter((movies) => {
+        //   return user.FavoriteMovies.includes(movies._id);
+        // });
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
@@ -40977,6 +40993,7 @@ class ProfileView extends _reactDefault.default.Component {
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_userViewDefault.default, {
+                                        user: username,
                                         name: user.Username,
                                         email: user.Email,
                                         __source: {
@@ -41027,17 +41044,6 @@ class ProfileView extends _reactDefault.default.Component {
         }));
     }
 }
-ProfileView.propTypes = {
-    user: _propTypesDefault.default.shape({
-        FavoriteMovies: _propTypesDefault.default.arrayOf(_propTypesDefault.default.shape({
-            _id: _propTypesDefault.default.string.isRequired,
-            Title: _propTypesDefault.default.string.isRequired
-        })),
-        Username: _propTypesDefault.default.string.isRequired,
-        Email: _propTypesDefault.default.string.isRequired,
-        Birthday: _propTypesDefault.default.string
-    })
-};
 
   $parcel$ReactRefreshHelpers$58c6.postlude(module);
 } finally {
