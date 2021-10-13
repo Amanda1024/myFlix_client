@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Row, Container } from 'react-bootstrap';
+import { Row, Container } from 'react-bootstrap';
 
 import './director-view.scss'
 
@@ -10,7 +10,7 @@ export class DirectorView extends React.Component {
     return (
       <Container>
         <Row>
-         <h3>Director: {director.Name}</h3>
+         <h4>Director: {director.Name}</h4>
          </Row>
          <Row>
          <p className='director-bio'>Bio: {director.Bio}</p>
@@ -22,7 +22,7 @@ export class DirectorView extends React.Component {
          <p className='director-death'>Death: {director.Death}</p>
          </Row>
          <Row>
-           <Button className='button' variant='primary' onClick={() => {onBackClick(null);}}>Back to movie</Button>
+           <button className='button' variant='primary' onClick={() => {onBackClick(null);}}>Back to movie</button>
          </Row>
       </Container>
     );
