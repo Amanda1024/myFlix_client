@@ -1,13 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Card, Row, Col, Container } from 'react-bootstrap';
+import { Card, Row, Col, Card, CardDeck, Form, Container } from 'react-bootstrap';
 
 import './profile-view.scss';
-
-import UserInfo from './user-view';
-import FavoriteMovies from './favorites-view';
-import UpdateUser from './update-view';
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -160,32 +156,84 @@ export class ProfileView extends React.Component {
 
   render() {
     const { FavoriteMovies, validated } = this.state;
-    const { movies, user, username, email} = this.props;
+    const { movies } = this.props;
 
-    const FavoriteMovies = movies.filter((movies) => {
-    return user.FavoriteMovies.includes(movies._id);
-  });
+return (
+  <Container>
+    <div>
+    <Card className='profile-card'>
+    <Col>
+      <Card.Body>
+        <Form noValidate validated={validated} className='update-form' onSubmit={(e) => this.handleUpdate(e, this.Name, this.Username, this.Password, this.Email, this.Birthday)}>
+        <p className='update'>Update Profile</p>
+          <Form.Group controlId='formName'>
+            <Form.Label className='form-label'>Name</Form.Label>
+            <Form.Control type='text' placeholder='Change Name' onChange={(e) => this.setName(e.target.value)} />
+          </Form.Group>
 
-    return (
-      <Container>
-        <Row>
-          <Col xs={12} sm={4}>
-            <Card>
-              <Card.Body>
-                <UserInfo name={user.Username} email={user.Email} />
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} sm={8}>
-            <Card.Body>
-              <UpdateUser user={user} setUser={setUser} />
-            </Card.Body>
-          </Col>
-        </Row>
-         <FavoriteMovies favoriteMovieList={favoriteMovieList} />
-      </Container>  
-    );
-  }
+          <Form.Group controlId='formBasicUsername'>
+            <Form.Label className='form-label'>Username</Form.Label>
+            <Form.Control type='text' placeholder='Change Username' onChange={(e) => this.setUsername(e.target.value)} />
+          </Form.Group>
+
+          <Form.Group controlId='formBasicPassword'>
+            <Form.Label className='form-label'>Password</Form.Label>
+            <Form.Control type='password' placeholder='Change Password' onChange={(e) => this.setPassword(e.target.value)} />
+          </Form.Group>
+
+          <Form.Group controlId='formBasicEmail'>
+            <Form.Label className='form-label'>Email</Form.Label>
+            <Form.Control type='email' placeholder='Change Email' onChange={(e) => this.setEmail(e.target.value)} />
+          </Form.Group>
+
+          <Form.Group controlId='formBasicBirthday'>
+            <Form.Label className='form-label'>Birthday</Form.Label>
+            <Form.Control type='date' placeholder='Change Birthday' onChange={(e) => this.setBirthday(e.target.value)} />
+          </Form.Group>
+
+          <button className='button' type='submit'>
+            Update
+          </button>
+
+          <button className='delete-button' onClick={(e) => this.handleDeleteUser(e)}>
+            Delete Account
+          </button>
+        </Form>
+      </Card.Body>
+      </Col>
+    </Card>
+    </div>
+    <div>
+    <Card.Body>
+      <p>Your Favorite Movies</p>
+        {FavoriteMovies.length === 0 && <div className='text-center'>Empty</div>}
+        <div className='favorite-movies'>
+          {FavoriteMovies.length > 0 &&
+          movies.map((movie) => {
+            if (movie._id === FavoriteMovies.find((favMovie) => favMovie === movie._id)) {
+            return (
+              <Row key={movie._id}>
+                <CardDeck className='movie-card-deck'>
+                    <Card className='favorites-item card-content'  key={movie._id}>
+                      <Card.Img style={{ width: '16rem' }} className='movieCard' variant='top' src={movie.ImagePath} />
+                        <Card.Body>
+                          <Card.Title className='movie-card-title'>{movie.Title}</Card.Title>
+                          <button className='button' value={movie._id} onClick={(e) => this.removeFavoriteMovie(e, movie)}>
+                           Remove
+                          </button>
+                        </Card.Body>
+                    </Card>
+                </CardDeck>
+               </Row>
+                );
+              }
+            })}
+        </div>
+      </Card.Body>
+      </div>
+  </Container>
+);
+}
 }
 
 ProfileView.propTypes = {
