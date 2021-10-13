@@ -116,7 +116,7 @@ render() {
               (<Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>);
-              if (movies.length === 0) return (<div className="main-view">No movies found!</div>);
+              if (movies.length === 0) return (<div className='main-view'>No movies found!</div>);
               return movies.map(m => (
               <Col md={3} key={m._id}>
                 <MovieCard movie={m} />
@@ -133,7 +133,7 @@ render() {
 
             <Route path='/profile' render={() => {
               if (!user) return <Col>
-                <ProfileView />
+                <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()}/>
               </Col>
           }} />
 
