@@ -208,14 +208,13 @@ return (
       <p>Your Favorite Movies</p>
         {FavoriteMovies.length === 0 && <div className='text-center'>Empty</div>}
         <div className='favorite-movies'>
+        <CardDeck className='movie-card-deck'>
           {FavoriteMovies.length > 0 &&
           movies.map((movie) => {
             if (movie._id === FavoriteMovies.find((favMovie) => favMovie === movie._id)) {
             return (
-              <Row key={movie._id}>
-                <CardDeck className='movie-card-deck'>
                     <Card className='favorites-item card-content'  key={movie._id}>
-                      <Card.Img style={{ width: '16rem' }} className='movieCard' variant='top' src={movie.ImagePath} />
+                      <Card.Img className='movieCard' variant='top' src={movie.ImagePath} />
                         <Card.Body>
                           <Card.Title className='movie-card-title'>{movie.Title}</Card.Title>
                           <button className='button' value={movie._id} onClick={(e) => this.removeFavoriteMovie(e, movie)}>
@@ -223,11 +222,10 @@ return (
                           </button>
                         </Card.Body>
                     </Card>
-                </CardDeck>
-               </Row>
                 );
               }
             })}
+            </CardDeck>
         </div>
       </Card.Body>
       </div>
