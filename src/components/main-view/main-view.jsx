@@ -112,10 +112,12 @@ render() {
            <Row className='main-view justify-content-md-center'>
 
             <Route exact path='/' render={() => {
-              if (!user) return 
-              (<Col>
+              if (!user) { 
+                return (
+              <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>);
+              }
               if (movies.length === 0) return (<div className='main-view'>No movies found!</div>);
               return movies.map(m => (
               <Col md={3} key={m._id}>
