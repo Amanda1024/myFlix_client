@@ -1,0 +1,56 @@
+.profile-card {
+    border-radius: 15px;
+    font-family: 'Lato', sans-serif;
+    margin: 40px;
+    padding-bottom: 75px;
+    text-align: center;
+    display: inline-block;
+}
+
+.update-form {
+    padding: 30px;
+    border-radius: 15px;
+    font-family: 'Lato', sans-serif;
+    margin: 40px;
+    text-align: left;
+    min-width: 400px;
+    max-height: 400px;
+}
+
+.movie-card-deck {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    // max-width: 81%;
+}
+
+.button {
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 10px 30px 10px 30px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    color: white;
+    border: 1px;
+    background-color: #9D84B7;
+    transition: 0.2s opacity;
+}
+
+.delete-button {
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 10px 30px 10px 30px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    color: black;
+    border: 1px;
+    background-color: #D5D5D5;
+    transition: 0.2s opacity;
+    float: right;
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+    opacity: 0.8;
+}
