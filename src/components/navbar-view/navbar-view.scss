@@ -6,12 +6,21 @@
     color: #9D84B7;
     padding-left: 10px;
     padding-right: 10px;
+    text-align: left;
 }
 
-.link-text {
+.nav-link {
     color: white;
+}
+
+.nav-link:hover {
+    color: #9D84B7;
 }
 
 .logout {
     color: #B2F9FC;
+}
+
+.logout:hover {
+    color: #9D84B7;
 }
