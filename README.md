@@ -36,4 +36,4 @@ Tech used:
 - MongoDB
 - Express
 - React
-- Node.js
+- Node
