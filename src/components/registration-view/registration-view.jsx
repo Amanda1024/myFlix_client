@@ -41,7 +41,6 @@ export function RegistrationView(props) {
     });
   }; 
 
-
 const formValidation = () => {
     let nameError = {};
     let usernameError = {};

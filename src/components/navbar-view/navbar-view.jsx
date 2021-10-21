@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+import { Navbar, Nav, Container, NavLink } from 'react-bootstrap';
 
 import './navbar-view.scss';
 
@@ -25,25 +24,34 @@ export class NavBar extends React.Component {
 
         if (!user) return null;
 
-        return (
-            <Navbar collapseOnSelect fixes='top' expand='lg' variant='light' className='navbar'>
-                <Navbar.Toggle aria-controls='basic-navbar-nav' />
-                <Navbar.Collapse id='responsive-navbar-nav'>
-                    <h3 className='myflix'>myFlix</h3>
-                    <Nav.Link as={Link} to={movies} className='link-text'>
-                        Movies
-                    </Nav.Link>
-                    <Nav.Link as={Link} to={profile} className='link-text'>
-                        Profile
-                    </Nav.Link>
-                    <Nav.Link to={'/'} onClick={this.onLoggedOut} className='logout'>
-                        Log Out
-                    </Nav.Link>
-                </Navbar.Collapse>
-            </Navbar>
-        )
-    }
+return (
+    <Navbar collapseOnSelect variant='dark' fixed='top' expand='lg' className='navbar'>
+     <Container>
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse id='responsive-navbar-nav'>
+          <Nav className='me-auto'>
+            <h3 className='myflix'>myFlix</h3>
+          </Nav>
 
+           <NavLink as={Link} to={movies} className='nav-link'>
+                Movies
+            </NavLink>
 
+            <NavLink as={Link} to={profile} className='nav-link'>
+                Profile
+            </NavLink>
 
+            <NavLink  to={'/'} onClick={this.onLoggedOut} className='logout'>
+                Log Out
+            </NavLink>
+
+         </Navbar.Collapse>
+      </Container>
+    </Navbar>
+   );
+  }
 }
+
+export default NavBar;
+
+
