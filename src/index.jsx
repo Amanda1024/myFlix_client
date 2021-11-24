@@ -8,6 +8,18 @@ import { devToolsEnhancer } from 'redux-devtools-extension';
 
 import MainView from './components/main-view/main-view';
 
+// import { BrowserRouter as Router, Route } from 'react-router-dom'
+// import { Login, Registration } from './components'
+
+// const App = () =>{
+//     return(
+//         <Router>
+//             <Route path='/login' component={Login} />
+//             <Route path='/registration' component={Registration} />
+//         </Router>
+//     )
+// }
+
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
 

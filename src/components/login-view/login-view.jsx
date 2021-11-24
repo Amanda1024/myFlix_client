@@ -4,6 +4,11 @@ import axios from 'axios';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Link } from 'react-router-dom';
+
 
 import './login-view.scss';
 
@@ -29,19 +34,41 @@ export function LoginView(props) {
 
     return (
         <div className='login'>
-        <Form>
-            <Form.Group controlId='formUsername'>
-                <Form.Label>Username:</Form.Label>
-                <Form.Control type='text' onChange={e => setUsername(e.target.value)} />
-            </Form.Group>
+          <Row>
+            <Col>
 
-            <Form.Group controlId='formPassword'>
-                <Form.Label>Password:</Form.Label>
-                <Form.Control type='password' onChange={e => setPassword(e.target.value)} />
-            </Form.Group>
-            <Button className='button' variant='primary' type='submit' onClick={handleSubmit}>Submit</Button>
-        </Form>
+              <Container>
+                <h3 class='login-title'>Login to your myFlix Account</h3>
+
+                <Form>
+                  <Form.Group controlId='formUsername'>
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type='text' onChange={e => setUsername(e.target.value)} />
+                  </Form.Group>
+
+                  <Form.Group controlId='formPassword'>
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control type='password' onChange={e => setPassword(e.target.value)} />
+                  </Form.Group>
+
+                  <Button id='button' type='submit' onClick={handleSubmit}>Submit</Button>
+                </Form>
+              </Container>
+
+              <Container>
+                <Row className='justify-content-center'>
+                  <span class='bottom-link'>Don't have an account?
+                    <Link to="/register">
+                    <Button id='link' variant='link' className='sign-up-link btn-md' type='submit'>Sign Up</Button>
+                  </Link></span>
+
+               </Row>
+              </Container>
+
+            </Col>
+          </Row>
         </div>
+       
     );
 }
 

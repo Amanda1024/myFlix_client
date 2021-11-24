@@ -1,4 +1,10 @@
-.registration {
+.registration-title {
+    text-align: center;
+    padding: 20px;
+    color: #9D84B7;
+}
+
+.register {
     padding: 30px;
     border: 0.2px solid grey;
     box-shadow: 5px 5px 5px #D5D5D5;
@@ -7,7 +13,11 @@
     margin: 40px;
 }
 
-.button {
+.bottom-link {
+    padding: 20px;
+}
+
+#button {
     border-radius: 5px;
     margin-top: 15px;
     padding: 10px 30px 10px 30px;
@@ -17,6 +27,22 @@
     border: 1px;
     background-color: #9D84B7;
     transition: 0.2s opacity;
+}
+
+#back {
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 10px 30px 10px 30px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    color: white;
+    border: 1px;
+    background-color: #091353;
+    transition: 0.2s opacity;
+}
+
+#link {
+    color: #9D84B7;
 }
 
 button:hover,
